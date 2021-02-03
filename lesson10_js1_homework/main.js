@@ -127,12 +127,12 @@
 //
 // // 3. За допомогою 3х різних prompt() отримати 3 слова які являються вашими Імям, По-Батькові та роками.
 // //     Вивести "Вітаю *Імя* *По батькові*. Тобі *вік* років".
-// // let name = prompt('name?');
-// // let middle_name = prompt('middle_name?');
-// // let age = +prompt('age?');
-// let name = 'Serhii';
-// let middle_name = 'Oleksiivych';
-// let age = 43;
+// let name = prompt('name?');
+// let middle_name = prompt('middle_name?');
+// let age = +prompt('age?');
+// // let name = 'Serhii';
+// // let middle_name = 'Oleksiivych';
+// // let age = 43;
 // alert('Вітаю '+name+' '+middle_name+'. Тобі '+age+' років');
 //
 // console.log('----3----');
