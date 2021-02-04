@@ -86,7 +86,7 @@ let user = {
 // // for (let i = 0; i < 3; i++) {
 // // }or (let i = 0; i < names.length; i++) {
 // //     // document.write(`Привіт ${names[i]}`);
-// //     // document.write(`Привіт ${names[i]$ <hr>}`);
+// //     // document.write(`Привіт ${names[i]}<hr>`);
 // //     document.write(names[i]);
 // //     document.write('<hr>');
 // //     console.log(i);
