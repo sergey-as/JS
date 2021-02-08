@@ -99,9 +99,9 @@ task = 7;
 console.log('----' + task + '----');
 document.write('<br>----' + task + '----<br>');
 let arr7 = [1, 2, 3, 4, 5];
-// console.log(arr7);
-console.log(arr7.pop());
-// console.log(arr7);
+console.log(arr7);
+arr7 = arr7.slice(3);
+console.log(arr7);
 
 // - Дан масив [1, 2, 3, 4, 5]. За допомогою методу/функції slice перетворіть масив в [1,2].
 task = 8;
@@ -178,7 +178,6 @@ for (let i = 0; i < arr14_1.length; i++) {
 console.log(arr14_2);
 
 
-
 //зробити масив з 10 чисел [2,17,13,6,22,31,45,66,100,-18]та:
 // 1. перебрати його циклом while
 // 2. перебрати його циклом for
@@ -193,3 +192,193 @@ console.log(arr14_2);
 //  створити пустий масив та :
 // - заповнити його 50 парними числами за допомоги циклу.
 // - заповнити його 50 непарними числами за допомоги циклу.
+task = 15;
+console.log('----' + task + '----');
+document.write('<br>----' + task + '----<br>');
+let arr15 = [2, 17, 13, 6, 22, 31, 45, 66, 100, -18];
+console.log(arr15);
+// 1. перебрати його циклом while
+task = '15_1';
+console.log('----' + task + '----');
+document.write('<br>----' + task + '----<br>');
+{
+    let i = 0;
+    while (i < arr15.length) {
+        console.log(arr15[i]);
+        i++;
+    }
+}
+
+// 2. перебрати його циклом for
+task = '15_2';
+console.log('----' + task + '----');
+document.write('<br>----' + task + '----<br>');
+for (let i = 0; i < arr15.length; i++) {
+    console.log(arr15[i]);
+}
+
+// 3. перебрати циклом while та вивести  числа тільки з непарним індексом
+task = '15_3';
+console.log('----' + task + '----');
+document.write('<br>----' + task + '----<br>');
+{
+    let i = 0;
+    while (i < arr15.length) {
+        (i % 2) && console.log(arr15[i]);
+        i++;
+    }
+}
+
+// 4. перебрати циклом for та вивести  числа тільки з непарним індексом
+task = '15_4';
+console.log('----' + task + '----');
+document.write('<br>----' + task + '----<br>');
+for (let i = 0; i < arr15.length; i++) {
+    (i % 2) && console.log(arr15[i]);
+}
+
+// 5. перебрати циклом while та вивести  числа тільки парні  значення
+task = '15_5';
+console.log('----' + task + '----');
+document.write('<br>----' + task + '----<br>');
+{
+    let i = 0;
+    while (i < arr15.length) {
+        !(arr15[i] % 2) && console.log(arr15[i]);
+        i++;
+    }
+}
+
+// 6. перебрати циклом for та вивести  числа тільки парні  значення
+task = '15_6';
+console.log('----' + task + '----');
+document.write('<br>----' + task + '----<br>');
+for (let i = 0; i < arr15.length; i++) {
+    !(arr15[i] % 2) && console.log(arr15[i]);
+}
+
+// 7. замінити кожне число кратне 3 на слово "okten"
+task = '15_7';
+console.log('----' + task + '----');
+document.write('<br>----' + task + '----<br>');
+console.log(arr15);
+for (let i = 0; i < arr15.length; i++) {
+    !(arr15[i] % 3) && (arr15[i] = 'okten');
+}
+console.log(arr15);
+
+// 8. вивести масив в зворотньому порядку.
+task = '15_8';
+console.log('----' + task + '----');
+document.write('<br>----' + task + '----<br>');
+console.log(arr15);
+for (let i = arr15.length - 1; i >= 0; i--) {
+    console.log(arr15[i]);
+}
+
+// 9. всі попередні завдання (окрім 8), але в зворотньому циклі (с заду на перед)
+// 1. перебрати його циклом while
+task = '15_9_1';
+console.log('----' + task + '----');
+document.write('<br>----' + task + '----<br>');
+arr15 = [2, 17, 13, 6, 22, 31, 45, 66, 100, -18];
+console.log(arr15);
+{
+    let i = arr15.length - 1;
+    while (i >= 0) {
+        console.log(arr15[i]);
+        i--;
+    }
+}
+
+// 2. перебрати його циклом for
+task = '15_9_2';
+console.log('----' + task + '----');
+document.write('<br>----' + task + '----<br>');
+for (let i = arr15.length - 1; !(i < 0); i--) {
+    console.log(arr15[i]);
+}
+
+// 3. перебрати циклом while та вивести  числа тільки з непарним індексом
+task = '15_9_3';
+console.log('----' + task + '----');
+document.write('<br>----' + task + '----<br>');
+{
+    console.log(arr15);
+    let i = arr15.length - 1;
+    while (!(i < 0)) {
+        (i % 2) && console.log(arr15[i]);
+        i--;
+    }
+}
+
+// 4. перебрати циклом for та вивести  числа тільки з непарним індексом
+task = '15_9_4';
+console.log('----' + task + '----');
+document.write('<br>----' + task + '----<br>');
+for (let i = arr15.length - 1; i >= 0; i--) {
+    (i % 2) && console.log(arr15[i]);
+}
+
+// 5. перебрати циклом while та вивести  числа тільки парні  значення
+task = '15_9_5';
+console.log('----' + task + '----');
+document.write('<br>----' + task + '----<br>');
+{
+    let i = arr15.length - 1;
+    while (i >= 0) {
+        !(arr15[i] % 2) && console.log(arr15[i]);
+        i--;
+    }
+}
+
+// 6. перебрати циклом for та вивести  числа тільки парні  значення
+task = '15_9_6';
+console.log('----' + task + '----');
+document.write('<br>----' + task + '----<br>');
+for (let i = arr15.length - 1; i >= 0; i--) {
+    !(arr15[i] % 2) && console.log(arr15[i]);
+}
+
+// 7. замінити кожне число кратне 3 на слово "okten"
+task = '15_9_7';
+console.log('----' + task + '----');
+document.write('<br>----' + task + '----<br>');
+console.log(arr15);
+for (let i = arr15.length - 1; i >= 0; i--) {
+    !(arr15[i] % 3) && (arr15[i] = 'okten');
+}
+console.log(arr15);
+
+// 10
+//  створити пустий масив та :
+// - заповнити його 50 парними числами за допомоги циклу.
+// - заповнити його 50 непарними числами за допомоги циклу.
+
+// - заповнити його 50 парними числами за допомоги циклу.
+task = '15_10_1';
+console.log('----' + task + '----');
+document.write('<br>----' + task + '----<br>');
+let arr15_10_1 = [];
+{
+    let i = 1;
+    while (arr15_10_1.length < 50) {
+        !(i % 2) && arr15_10_1.push(i);
+        i++;
+    }
+}
+console.log(arr15_10_1);
+
+// - заповнити його 50 непарними числами за допомоги циклу.
+task = '15_10_2';
+console.log('----' + task + '----');
+document.write('<br>----' + task + '----<br>');
+let arr15_10_2 = [];
+{
+    let i = 1;
+    while (arr15_10_2.length < 50) {
+        (i % 2) && arr15_10_2.push(i);
+        i++;
+    }
+}
+console.log(arr15_10_2);
