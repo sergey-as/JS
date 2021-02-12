@@ -1,0 +1,9 @@
+.item {
+    width: 400px;
+    border: 1px solid red;
+    margin-bottom: 10px;
+}
+
+.picture {
+    width: 100%;
+}
