@@ -272,8 +272,7 @@ task = 15;
 console.log('----' + task + '----');
 let cars15 = [];
 for (let l = 0; l < cars7.length; l++) {
-    let jsonCar7 = JSON.stringify(cars7[l]);
-    cars15[l] = jsonCar7;
+    cars15[l] = JSON.stringify(cars7[l]);
 }
 console.log(cars15);
 
@@ -554,13 +553,80 @@ for (let i = 0; i < usersWithId.length; i++) {
 console.log(usersWithCities);
 
 
-// 24.
+// 24. створити розмітці блок з id, class та текстом в середені. Зчитати окремо цей текст з селекторів по id , class та тегу
 task = 24;
 console.log('----' + task + '----');
+// <p id="tsk24" class="task24">створити розмітці блок з id, class та текстом в середені. Зчитати окремо цей текст з селекторів по id , class та тегу</p>
+console.log(document);
+{
+    let pById = document.getElementById('tsk24');
+    console.log(pById);
+    console.log(pById.innerText);
+    let pListByClassName = document.getElementsByClassName('task24');
+    console.log(pListByClassName);
+    for (let pListByClassNameElement of pListByClassName) {
+        console.log(pListByClassNameElement);
+        console.log(pListByClassNameElement.innerText);
+    }
+    let pPointsByTagName = document.getElementsByTagName('p');
+    console.log(pPointsByTagName);
+    for (let pPointsByTagNameElement of pPointsByTagName) {
+        console.log(pPointsByTagNameElement);
+        console.log(pPointsByTagNameElement.innerText);
+    }
+}
+// 25. змінити цей текст використовуючи селектори id, class, tag
+task = 25;
+console.log('----' + task + '----');
+// <p id="tsk25" class="task25">змінити цей текст використовуючи селектори id, class, tag</p>
+console.log(document);
+{
+    let pById = document.getElementById('tsk24');
+    console.log(pById.innerText);
+    pById.innerText = 'змінити цей текст використовуючи селектори id';
+    console.log(pById.innerText);
 
-//- створити розмітці блок з id, class та текстом в середені. Зчитати окремо цей текст з селекторів по id , class та тегу
-// - змінити цей текст використовуючи селектори id, class,  tag
-// - змінити висоту та ширину блоку використовуючи селектори id, class,  tag
+    let pListByClassName = document.getElementsByClassName('task24');
+    for (let pListByClassNameElement of pListByClassName) {
+        console.log(pListByClassNameElement.innerText);
+        pListByClassNameElement.innerText = 'змінити цей текст використовуючи селектори class';
+        console.log(pListByClassNameElement.innerText);
+    }
+    let pPointsByTagName = document.getElementsByTagName('p');
+    for (let pPointsByTagNameElement of pPointsByTagName) {
+        console.log(pPointsByTagNameElement.innerText);
+        pPointsByTagNameElement.innerText = 'змінити цей текст використовуючи селектори tag';
+        console.log(pPointsByTagNameElement.innerText);
+    }
+}
+
+
+// 26. змінити висоту та ширину блоку використовуючи селектори id, class,  tag
+task = 26;
+console.log('----' + task + '----');
+
+// <p id="tsk24" class="task24">створити розмітці блок з id, class та текстом в середені. Зчитати окремо цей текст з селекторів по id , class та тегу</p>
+console.log(document);
+
+let pById = document.getElementById('tsk24');
+console.log(pById.innerText);
+pById.innerText = 'змінити цей текст використовуючи селектори id';
+console.log(pById.innerText);
+
+let pListByClassName = document.getElementsByClassName('task24');
+for (let pListByClassNameElement of pListByClassName) {
+    console.log(pListByClassNameElement.innerText);
+    pListByClassNameElement.innerText = 'змінити цей текст використовуючи селектори class';
+    console.log(pListByClassNameElement.innerText);
+}
+let pPointsByTagName = document.getElementsByTagName('p');
+for (let pPointsByTagNameElement of pPointsByTagName) {
+    console.log(pPointsByTagNameElement.innerText);
+    pPointsByTagNameElement.innerText = 'змінити цей текст використовуючи селектори tag';
+    console.log(pPointsByTagNameElement.innerText);
+}
+
+
 // - за допомоги document.createElement та appendChild створити таблицю на 1 рядок з трьома ячейками всередені
 // - за допомоги document.createElement, appendChild та циклу створити таблицю на 10 рядків з трьома ячейками всередені
 // - за допомоги document.createElement, appendChild та 2х циклів створити таблицю на 10 рядків з 5 ячейками всередені
