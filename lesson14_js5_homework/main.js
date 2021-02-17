@@ -556,7 +556,7 @@ console.log(usersWithCities);
 // 24. створити розмітці блок з id, class та текстом в середені. Зчитати окремо цей текст з селекторів по id , class та тегу
 task = 24;
 console.log('----' + task + '----');
-// <p id="tsk24" class="task24">створити розмітці блок з id, class та текстом в середені. Зчитати окремо цей текст з селекторів по id , class та тегу</p>
+// <h1 id="tsk24" class="task24">створити розмітці блок з id, class та текстом в середені. Зчитати окремо цей текст з селекторів по id , class та тегу</h1>
 console.log(document);
 {
     let pById = document.getElementById('tsk24');
@@ -568,7 +568,7 @@ console.log(document);
         console.log(pListByClassNameElement);
         console.log(pListByClassNameElement.innerText);
     }
-    let pPointsByTagName = document.getElementsByTagName('p');
+    let pPointsByTagName = document.getElementsByTagName('h1');
     console.log(pPointsByTagName);
     for (let pPointsByTagNameElement of pPointsByTagName) {
         console.log(pPointsByTagNameElement);
@@ -578,21 +578,21 @@ console.log(document);
 // 25. змінити цей текст використовуючи селектори id, class, tag
 task = 25;
 console.log('----' + task + '----');
-// <p id="tsk25" class="task25">змінити цей текст використовуючи селектори id, class, tag</p>
+// <h2 id="tsk25" class="task25">змінити цей текст використовуючи селектори id, class, tag</h2>
 console.log(document);
 {
-    let pById = document.getElementById('tsk24');
+    let pById = document.getElementById('tsk25');
     console.log(pById.innerText);
     pById.innerText = 'змінити цей текст використовуючи селектори id';
     console.log(pById.innerText);
 
-    let pListByClassName = document.getElementsByClassName('task24');
+    let pListByClassName = document.getElementsByClassName('task25');
     for (let pListByClassNameElement of pListByClassName) {
         console.log(pListByClassNameElement.innerText);
         pListByClassNameElement.innerText = 'змінити цей текст використовуючи селектори class';
         console.log(pListByClassNameElement.innerText);
     }
-    let pPointsByTagName = document.getElementsByTagName('p');
+    let pPointsByTagName = document.getElementsByTagName('h2');
     for (let pPointsByTagNameElement of pPointsByTagName) {
         console.log(pPointsByTagNameElement.innerText);
         pPointsByTagNameElement.innerText = 'змінити цей текст використовуючи селектори tag';
@@ -605,38 +605,193 @@ console.log(document);
 task = 26;
 console.log('----' + task + '----');
 
-// <p id="tsk24" class="task24">створити розмітці блок з id, class та текстом в середені. Зчитати окремо цей текст з селекторів по id , class та тегу</p>
+// <h3 id="tsk26" class="task26">змінити висоту та ширину блоку використовуючи селектори id, class,  tag</h3>
 console.log(document);
 
-let pById = document.getElementById('tsk24');
+let pById = document.getElementById('tsk26');
 console.log(pById.innerText);
-pById.innerText = 'змінити цей текст використовуючи селектори id';
+pById.innerText = 'змінити висоту та ширину блоку використовуючи селектори id';
+pById.style.height = 'auto';
+pById.style.width = '150px';
+pById.style.background = 'silver';
+
 console.log(pById.innerText);
 
-let pListByClassName = document.getElementsByClassName('task24');
+let pListByClassName = document.getElementsByClassName('task26');
 for (let pListByClassNameElement of pListByClassName) {
-    console.log(pListByClassNameElement.innerText);
-    pListByClassNameElement.innerText = 'змінити цей текст використовуючи селектори class';
+    pListByClassNameElement.innerText = 'змінити висоту та ширину блоку використовуючи селектори class';
+    pListByClassNameElement.style.height = '500px';
+    pListByClassNameElement.style.width = '250px';
     console.log(pListByClassNameElement.innerText);
 }
-let pPointsByTagName = document.getElementsByTagName('p');
+let pPointsByTagName = document.getElementsByTagName('h3');
 for (let pPointsByTagNameElement of pPointsByTagName) {
-    console.log(pPointsByTagNameElement.innerText);
-    pPointsByTagNameElement.innerText = 'змінити цей текст використовуючи селектори tag';
+    pPointsByTagNameElement.innerText = 'змінити висоту та ширину блоку використовуючи селектори tag';
+    pPointsByTagNameElement.style.height = '50px';
+    pPointsByTagNameElement.style.width = '500px';
     console.log(pPointsByTagNameElement.innerText);
 }
 
+// 27. за допомоги document.createElement та appendChild створити таблицю на 1 рядок з трьома ячейками всередені
+task = 27;
+console.log('----' + task + '----');
+taskN = document.createElement('div');
+taskN.innerText = `----${task}----`;
+document.body.appendChild(taskN);
+{
+    let tabConteiner = document.createElement('div');
+    tabConteiner.innerText = 'TABLE';
+    tabConteiner.style.background = 'green';
+    let tab = document.createElement('table');
+    tab.style.background = 'tomato';
+    tab.setAttribute("border", "2");
 
-// - за допомоги document.createElement та appendChild створити таблицю на 1 рядок з трьома ячейками всередені
-// - за допомоги document.createElement, appendChild та циклу створити таблицю на 10 рядків з трьома ячейками всередені
-// - за допомоги document.createElement, appendChild та 2х циклів створити таблицю на 10 рядків з 5 ячейками всередені
-// - за допомоги document.createElement, appendChild та 2х циклів створити таблицю на n рядків з m ячейками всередені. n та m отримати з prompt
-//
-// --Завантажити з мережі будь-який шаблон сайту. Підключити до нього свій скріпт-файл. У файлі прописати наступні доступи та дії
+    tabConteiner.appendChild(tab);
+
+    let tabTr = document.createElement('tr');
+    tab.appendChild(tabTr);
+
+    // for (let i = 1; i <= 3; i++) {
+    //     let tabTd = document.createElement('td');
+    //     tabTd.innerText = '  ' + i + '  ';
+    //     tabTr.appendChild(tabTd);
+    // }
+
+    let td1 = document.createElement('td');
+    td1.innerText = '  1  ';
+    tabTr.appendChild(td1);
+
+    let td2 = document.createElement('td');
+    td2.innerText = '  2  ';
+    tabTr.appendChild(td2);
+
+    let td3 = document.createElement('td');
+    td3.innerText = '  3  ';
+    tabTr.appendChild(td3);
+
+    document.body.appendChild(tabConteiner);
+}
+console.log(document);
+
+
+// 28. за допомоги document.createElement, appendChild та циклу створити таблицю на 10 рядків з трьома ячейками всередені
+task = 28;
+console.log('----' + task + '----');
+taskN = document.createElement('div');
+taskN.innerText = `----${task}----`;
+document.body.appendChild(taskN);
+{
+    let tabConteiner = document.createElement('div');
+    tabConteiner.innerText = 'TABLE';
+    tabConteiner.style.background = '#006880';
+    let tab = document.createElement('table');
+    tab.style.background = '#ff9c47';
+    tab.setAttribute("border", "2");
+
+    tabConteiner.appendChild(tab);
+    for (let l = 1; l <= 10; l++) {
+        let tabTr = document.createElement('tr');
+        tab.appendChild(tabTr);
+
+        // for (let i = 1; i <= 3; i++) {
+        //     let tabTd = document.createElement('td');
+        //     tabTd.innerText = '  ' + l + '__' + i + '  ';
+        //     tabTr.appendChild(tabTd);
+        // }
+
+        let td1 = document.createElement('td');
+        td1.innerText = '  ' + l + '__1  ';
+        tabTr.appendChild(td1);
+
+        let td2 = document.createElement('td');
+        td2.innerText = '  ' + l + '__2  ';
+        tabTr.appendChild(td2);
+
+        let td3 = document.createElement('td');
+        td3.innerText = '  ' + l + '__3  ';
+        tabTr.appendChild(td3);
+
+    }
+    document.body.appendChild(tabConteiner);
+}
+console.log(document);
+
+// 29. за допомоги document.createElement, appendChild та 2х циклів створити таблицю на 10 рядків з 5 ячейками всередені
+task = 29;
+console.log('----' + task + '----');
+taskN = document.createElement('div');
+taskN.innerText = `----${task}----`;
+document.body.appendChild(taskN);
+{
+    let tabConteiner = document.createElement('div');
+    tabConteiner.innerText = 'TABLE';
+    tabConteiner.style.background = '#00803e';
+    let tab = document.createElement('table');
+    tab.style.background = '#ffcb47';
+    tab.setAttribute("border", "2");
+
+    tabConteiner.appendChild(tab);
+    for (let l = 1; l <= 10; l++) {
+        let tabTr = document.createElement('tr');
+        tab.appendChild(tabTr);
+
+        for (let i = 1; i <= 5; i++) {
+            let tabTd = document.createElement('td');
+            tabTd.innerText = '  ' + l + '__' + i + '  ';
+            tabTr.appendChild(tabTd);
+        }
+    }
+    document.body.appendChild(tabConteiner);
+}
+console.log(document);
+
+// 30. за допомоги document.createElement, appendChild та 2х циклів створити
+// таблицю на n рядків з m ячейками всередені. n та m отримати з prompt
+task = 30;
+console.log('----' + task + '----');
+taskN = document.createElement('div');
+taskN.innerText = `----${task}----`;
+document.body.appendChild(taskN);
+{
+    let m = +prompt('rows?', 10);
+    let n = +prompt('columns?', 10);
+
+    let tabConteiner = document.createElement('div');
+    tabConteiner.innerText = 'TABLE';
+    tabConteiner.style.background = '#b3f1d0';
+    let tab = document.createElement('table');
+    tab.style.background = '#d09ad0';
+    tab.setAttribute("border", "2");
+
+    tabConteiner.appendChild(tab);
+    for (let i = 1; i <= m; i++) {
+        let tabTr = document.createElement('tr');
+        tab.appendChild(tabTr);
+
+        for (let j = 1; j <= n; j++) {
+            let tabTd = document.createElement('td');
+            tabTd.innerText = '  ' + i + '__' + j + '  ';
+            tabTr.appendChild(tabTd);
+        }
+    }
+    document.body.appendChild(tabConteiner);
+}
+console.log(document);
+
+// 31. Завантажити з мережі будь-який шаблон сайту. Підключити до нього свій скріпт-файл.
+// У файлі прописати наступні доступи та дії
 // - знайти всі елементі, які мають class
 // - знайти всі параграфи ,та змінити текст на hello oktenweb!
-//     - знайти всі div та змінити ім колір на червоний
-//
+// - знайти всі div та змінити ім колір на червоний
+task = 31;
+console.log('----' + task + '----');
+taskN = document.createElement('div');
+taskN.innerText = `----${task}----`;
+document.body.appendChild(taskN);
+
+
+
+
 // ============
 // ====class===
 //     ============
