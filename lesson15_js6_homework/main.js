@@ -234,79 +234,283 @@ console.log(arrToArr(arr1, arr2));
 
 
 //14
-let div14 = task(14, 'с');
+let div14 = task(14, '*** приймає масив та число "i", та міняє місцями об`єкт який знаходиться в індексі "i" на "i+1"');
+
+function arrChangeElem(arr, i) {
+    if (arr.length >= 2) {
+        let elemI = arr[i];
+        arr[i] = arr[i + 1];
+        arr[i + 1] = elemI;
+    }
+    return arr;
+}
+
+console.log([1, 2, 3, 4, 11]);
+console.log(arrChangeElem([1, 2, 3, 4, 11], 3));
 
 
-// - *** приймає масив та число "i", та міняє місцями об`єкт який знаходиться в індексі "i" на "i+1"
-// - *** створити функцію яка буде переносити елементи з значенням 0 у кінець маисву. Зберігаючи при цьому порядок не нульових значень.
-// Двожина масиву від 2 до 100
+//15
+let div15 = task(15, '*** створити функцію яка буде переносити елементи з значенням 0 у кінець маисву. Зберігаючи при цьому порядок не нульових значень.' +
+    'Двожина масиву від 2 до 100');
 // Приклад
 // [1,0,6,0,3] => [1,6,3,0,0]
 // [0,1,2,3,4] => [1,2,3,4,0]
 // [0,0,1,0]   => [1,0,0,0]
-//
-// Створити функцію яка :
-// - Додає в боді блок з текстом "Hello owu"
-// - Додає в боді елемент з текстом . Тип елементу та текст отримати через аргументи
-// - приймає масив автомобілів (можна взяти з попередніх дз ),та  індентифікатор елемнту в який потрібно додати список цих автомобілів.
-// Для кожного автомобіля створити свій блок, та додати його в елемент, індентифікатор якого ви отримали. Всі властивості авто в обному блоці
-// - приймає масив автомобілів (можна взяти з попередніх дз ),та  індентифікатор елемнту в який потрібно додати список цих автомобілів.
-// Для кожного автомобіля створити свій блок, та додати його в елемент, індентифікатор якого ви отримали.
-// Для кожної властивості створити всередені блока автомоблія свій блок
-//
-// (на основі минулого ДЗ)
-// **- функція приймає 2 масиви з рівною кількістю об'єктів та з'єднює в один об'єкт користувача та місто з відповідними "id" та "user_id",
-// та повертає масив цих з'єднаних об'єктів.
+
+function arrMove0ToEnd(arr) {
+    let arrZerros = [];
+    let arrNotZerros = [];
+
+    for (let i = 0; i < arr.length; i++) {
+        (arr[i] === 0) && (arrZerros.push(arr[i]));
+        !(arr[i] === 0) && (arrNotZerros.push(arr[i]));
+    }
+    return arrNotZerros.concat(arrZerros);
+}
+
+console.log([1, 0, 6, 0, 3]);
+console.log(arrMove0ToEnd([1, 0, 6, 0, 3]));
+
+console.log([0, 1, 2, 3, 4]);
+console.log(arrMove0ToEnd([0, 1, 2, 3, 4]));
+
+console.log([0, 0, 1, 0]);
+console.log(arrMove0ToEnd([0, 0, 1, 0]));
+
+
+//16
+let div16 = task(16, 'Створити функцію яка : Додає в боді блок з текстом "Hello owu"');
+
+function addToBodyHelloOwu() {
+    let helloOwu = document.createElement('div');
+    helloOwu.innerText = 'Hello owu';
+    document.body.appendChild(helloOwu);
+}
+
+addToBodyHelloOwu();
+
+
+//17
+let div17 = task(17, 'Створити функцію яка : Додає в боді елемент з текстом . Тип елементу та текст отримати через аргументи');
+
+function addElemToBody(tagName, txt) {
+    let elem = document.createElement(tagName);
+    elem.innerText = txt;
+    document.body.appendChild(elem);
+}
+
+addElemToBody('h2', '***Створити функцію яка : Додає в боді елемент з текстом***');
+addElemToBody('h3', '///Тип елементу та текст отримати через аргументи///');
+addToBodyHelloOwu();
+
+
+//18
+let div18 = task(18, 'Створити функцію яка : приймає масив автомобілів (можна взяти з попередніх дз ),' +
+    'та  індентифікатор елемнту в який потрібно додати список цих автомобілів.');
+
+function addCars(cars, id) {
+    let elemById = document.getElementById(id);
+    let ul = document.createElement('ul');
+    elemById.appendChild(ul);
+
+    for (let i = 0; i < cars.length; i++) {
+
+        let li = document.createElement('li');
+        li.innerText = JSON.stringify(cars[i]);
+        ul.appendChild(li);
+    }
+}
+
+let cars = [
+    {model: 'civic', year: 1988, power: 75, color: 'red'},
+    {model: 'accord', year: 2000, power: 130, color: 'white'},
+    {model: 'cr-v', year: 2002, power: 150, color: 'green'},
+    {model: 'sierra', year: 1989, power: 60, color: 'blue'},
+    {model: 'fusion', year: 2004, power: 65, color: 'green'},
+    {model: 'rav4', year: 2010, power: 130, color: 'silver'},
+    {model: 'corolla', year: 1997, power: 65, color: 'black'},
+    {model: 'camry', year: 2010, power: 150, color: 'white'},
+    {model: 'megane', year: 2015, power: 95, color: 'black'},
+    {model: 'clio', year: 2003, power: 55, color: 'silver'}
+];
+addCars(cars, 'task18');
+
+
+//19
+let div19 = task(19, 'Для кожного автомобіля створити свій блок,' +
+    ' та додати його в елемент, індентифікатор якого ви отримали. Всі властивості авто в обному блоці');
+
+function addCarsToBlock(cars, id) {
+    let elemById = document.getElementById(id);
+
+    for (let i = 0; i < cars.length; i++) {
+        let car = cars[i];
+        let div = document.createElement('div');
+        let txt = '';
+        for (let carKey in car) {
+            txt += '\n' + carKey + ': ' + car[carKey];
+        }
+        // console.log(txt);
+        div.innerText = txt;
+        elemById.appendChild(div);
+    }
+}
+
+addCarsToBlock(cars, 'task19');
+
+
+//20
+let div20 = task(20, 'приймає масив автомобілів (можна взяти з попередніх дз ),' +
+    'та  індентифікатор елемнту в який потрібно додати список цих автомобілів.' +
+    'Для кожного автомобіля створити свій блок, та додати його в елемент, індентифікатор якого ви отримали.' +
+    'Для кожної властивості створити всередені блока автомоблія свій блок');
+
+function addCarsAndPropToBlock(cars, id) {
+    let elemById = document.getElementById(id);
+
+    for (let i = 0; i < cars.length; i++) {
+        let divCar = document.createElement('div');
+        elemById.appendChild(divCar);
+
+        let car = cars[i];
+        for (let carKey in car) {
+            let divProp = document.createElement('div');
+            divCar.appendChild(divProp);
+            divProp.innerText = carKey + ': ' + car[carKey];
+        }
+    }
+}
+
+addCarsAndPropToBlock(cars, 'task20');
+
+
+//21
+let div21 = task(21, '(на основі минулого ДЗ)' +
+    '\n **- функція приймає 2 масиви з рівною кількістю об\'єктів та з\'єднює в один об\'єкт користувача' +
+    ' та місто з відповідними "id" та "user_id",' +
+    '\n та повертає масив цих з\'єднаних об\'єктів.');
 // Приклад масивів:
 //             let usersWithId = [{id: 1, name: 'vasya', age: 31, status: false}, {id: 2, name: 'petya', age: 30, status: true}, {id: 3, name: 'kolya', age: 29, status: true}, {id: 4, name: 'olya', age: 28, status: false},];
 //             let citiesWithId = [{user_id: 3, country: 'USA', city: 'Portland'}, {user_id: 1, country: 'Ukraine', city: 'Ternopil'}, {user_id: 2, country: 'Poland', city: 'Krakow'}, {user_id: 4, country: 'USA', city: 'Miami'},];
 // Частковий приклад реультату:
-//
-//
-//
-// ***- беремо завдання з правилами з укроку №3 :
-// Та робимо це функцією.При цьому правила отримувати через аргумент.
-// "Є масив котрий характеризує правила. Створити скрипт який ітерує цей масив, та робить з кожне правило в окремому блоці.
-// При цому в блоці, номер правила записати в свій блок, текст правила записати в свій окремий блок.
-// Результатом відпрацювання скріпта повинна бути структура яка міститься в блоці wrap файла rule.html
-//
-// 			let rules = [
-// 				{
-// 					title: 'Первое правило Бойцовского клуба.',
-// 					body: 'Никому не рассказывать о Бойцовском клубе.'
-// 				},
-// 				{
-// 					title: 'Второе правило Бойцовского клуба.',
-// 					body: 'Никогда никому не рассказывать о Бойцовском клубе.'
-// 				},
-// 				{
-// 					title: 'Третье правило Бойцовского клуба.',
-// 					body: 'В схватке участвуют только двое.'
-// 				},
-// 				{
-// 					title: 'Четвертое правило Бойцовского клуба.',
-// 					body: 'Не более одного поединка за один раз.'
-// 				},
-// 				{
-// 					title: 'Пятое правило Бойцовского клуба.',
-// 					body: 'Бойцы сражаются без обуви и голые по пояс.'
-// 				},
-// 				{
-// 					title: 'Шестое правило Бойцовского клуба.',
-// 					body: 'Поединок продолжается столько, сколько потребуется.'
-// 				},
-// 				{
-// 					title: 'Седьмое правило Бойцовского клуба.',
-// 					body: 'Если противник потерял сознание или делает вид, что потерял, или говорит «Хватит» — поединок окончен.'
-// 				},
-// 				{
-// 					title: 'Восьмое и последнее правило Бойцовского клуба.',
-// 					body: 'Новичок обязан принять бой.'
-// 				},
-//
-// 			];
-// "
-//
+
+function arrUnite(arr1, arr2) {
+    let arr = [];
+    for (let i = 0; i < arr1.length; i++) {
+        let arr1Element = arr1[i];
+        let newObj = JSON.parse(JSON.stringify(arr1Element));
+
+        for (let j = 0; j < arr2.length; j++) {
+            let arr2Element = arr2[j];
+            if (newObj.id === arr2Element.user_id) {
+                newObj.city = JSON.parse(JSON.stringify(arr2Element));
+                arr.push(newObj);
+                break;
+            }
+        }
+    }
+    return arr;
+}
+
+let usersWithId = [
+    {id: 1, name: 'vasya', age: 31, status: false},
+    {id: 2, name: 'petya', age: 30, status: true},
+    {id: 3, name: 'kolya', age: 29, status: true},
+    {id: 4, name: 'olya', age: 28, status: false},
+];
+let citiesWithId = [
+    {user_id: 3, country: 'USA', city: 'Portland'},
+    {user_id: 1, country: 'Ukraine', city: 'Ternopil'},
+    {user_id: 2, country: 'Poland', city: 'Krakow'},
+    {user_id: 4, country: 'USA', city: 'Miami'},
+];
+console.log(usersWithId);
+console.log(citiesWithId);
+console.log(arrUnite(usersWithId, citiesWithId));
+
+
+//22
+let div22 = task(22, '***- беремо завдання з правилами з укроку №3 :' +
+    '\n Та робимо це функцією.При цьому правила отримувати через аргумент.' +
+    '\n "Є масив котрий характеризує правила. Створити скрипт який ітерує цей масив, та робить з кожне правило в окремому блоці.' +
+    '\n При цому в блоці, номер правила записати в свій блок, текст правила записати в свій окремий блок.' +
+    '\n Результатом відпрацювання скріпта повинна бути структура яка міститься в блоці wrap файла rule.html' +
+    '');
+// <div id="content"></div>
+// <h1>Правила бойцовского клуба</h1>
+// <div id="wrap">
+//     <div className="rules rule1">
+//         <h2>Первое правило Бойцовского клуба.</h2>
+//         <p>Никому не рассказывать о Бойцовском клубе.</p>
+//     </div>
+// ...
+function showRule(rule, i, parent) {
+    let divRule = document.createElement('div');
+    divRule.className = "rules rule" + (i+1);
+    parent.appendChild(divRule);
+
+    let title = document.createElement('h2');
+    title.innerText = rule.title;
+    divRule.appendChild(title);
+
+    let body = document.createElement('p');
+    body.innerText = rule.body;
+    divRule.appendChild(body);
+}
+
+let divContent = document.createElement('div');
+divContent.id = 'content';
+div22.appendChild(divContent);
+let h1 = document.createElement('h1');
+h1.innerText = 'Правила бойцовского клуба';
+div22.appendChild(h1);
+let divWrap = document.createElement('div');
+divWrap.id = 'wrap';
+div22.appendChild(divWrap);
+
+let rules = [
+    {
+        title: 'Первое правило Бойцовского клуба.',
+        body: 'Никому не рассказывать о Бойцовском клубе.'
+    },
+    {
+        title: 'Второе правило Бойцовского клуба.',
+        body: 'Никогда никому не рассказывать о Бойцовском клубе.'
+    },
+    {
+        title: 'Третье правило Бойцовского клуба.',
+        body: 'В схватке участвуют только двое.'
+    },
+    {
+        title: 'Четвертое правило Бойцовского клуба.',
+        body: 'Не более одного поединка за один раз.'
+    },
+    {
+        title: 'Пятое правило Бойцовского клуба.',
+        body: 'Бойцы сражаются без обуви и голые по пояс.'
+    },
+    {
+        title: 'Шестое правило Бойцовского клуба.',
+        body: 'Поединок продолжается столько, сколько потребуется.'
+    },
+    {
+        title: 'Седьмое правило Бойцовского клуба.',
+        body: 'Если противник потерял сознание или делает вид, что потерял, или говорит «Хватит» — поединок окончен.'
+    },
+    {
+        title: 'Восьмое и последнее правило Бойцовского клуба.',
+        body: 'Новичок обязан принять бой.'
+    },
+];
+
+for (let i = 0; i < rules.length; i++) {
+    showRule(rules[i], i, divWrap);
+}
+
+
+//23
+let div23 = task(23, '')
+
 // ===========додаткове від віктора========
 // 1) Точная степень двойки.
 // Дано натуральное число N.
