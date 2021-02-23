@@ -535,6 +535,51 @@ let div24 = task(24, '===========додаткове від віктора=======
 
 
 
+function createObj(obj, childOf, tagName, tagIndex = 0) {
+    let tag = '';
+    if (tagIndex > 5) {
+        tag = 'p';
+    } else {
+        tag = tagName + (tagIndex == 0 ? '' : tagIndex)
+    }
+
+    for (let objKey in obj) {
+        let propertyByKey = obj[objKey];
+
+        if (typeof propertyByKey === 'object') {
+            let objDiv = createElem(childOf, tag, objKey + ':');
+            createObj(propertyByKey, objDiv, tagName, (tagIndex == 0 ? '' : (tagIndex + 1)));
+        } else {
+            let property = createElem(childOf, tag, objKey + ': ' + propertyByKey);
+        }
+    }
+};
+
+
+function outputData(objs, parentId, childOf) {
+    let parentBlock = createElem(childOf, 'div', '');
+    parentBlock.id = parentId;
+    createElem(parentBlock, 'h2', (parentId + ':').toUpperCase());
+
+    for (let obj of objs) {
+        let objDiv = createElem(parentBlock, 'div', '');
+        createObj(obj, objDiv, 'h', 3);
+    }
+};
+
+function func(baseURL, suffOfBaseURL, childOf) {
+    fetch(baseURL + suffOfBaseURL)
+        .then(resp => resp.json())
+        .then(objsJsonplaceholder => {
+                let jsonObjs = JSON.stringify(objsJsonplaceholder);
+                let objs = JSON.parse(jsonObjs);
+                outputData(objs, suffOfBaseURL, childOf);
+            }
+        );
+};
+
+
+
 // ===========додаткове від віктора========
 // 3) Flat
 // Вирівняти багаторівневий масив в однорівневий
