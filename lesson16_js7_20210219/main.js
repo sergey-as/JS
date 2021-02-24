@@ -101,6 +101,35 @@
 // console.log(name, id, age, status, wife, sts);
 
 
+// // Copy of Object
+// //1
+// let user = {name: 'vasya', age: 123, wife: {name: 'olya', father: {age: 60}}};
+// console.log(user);
+// let user2 = {...user};
+// user2.status = true;
+// console.log(user2);
 //
-let user = {name:'vasya', age:123}
-let user2 = {...user};
+// //2
+// let s =JSON.stringify(user);
+// let user3 =JSON.parse(s);
+// user3.car = 'ford';
+// console.log(user3);
+
+
+//
+let [a, b, c] = [11, 22, 33];
+console.log(a, b, c);
+
+let arr = [22, 33, 44];
+let arr2 = [...arr, 55, 66];
+console.log(arr2);
+
+function print(...x){
+    for (const x1 of x) {
+        console.log(x1);
+    }
+}
+
+print(...arr);
+
+console.log(Math.max(...arr, 255, 123, ...arr2));
