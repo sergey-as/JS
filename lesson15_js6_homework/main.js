@@ -515,10 +515,10 @@ let div23 = task(23, '===========додаткове від віктора=======
 
 function powerOfTwo(num) {
     let res = 'NO';
-    for (let i = 2; i <= num; ) {
+    for (let i = 2; i <= num;) {
         // console.log(i);
         (i === num) && (res = 'YES');
-        i=i*2;
+        i = i * 2;
     }
     return res;
 }
@@ -533,55 +533,73 @@ let div24 = task(24, '===========додаткове від віктора=======
     '\n' + 'реалізувати глибоке копіювання обєкту за допомогою рекурсій' +
     '');
 
-
-
-function createObj(obj, childOf, tagName, tagIndex = 0) {
-    let tag = '';
-    if (tagIndex > 5) {
-        tag = 'p';
-    } else {
-        tag = tagName + (tagIndex == 0 ? '' : tagIndex)
-    }
+function copyObj(obj) {
+    let copyOfObj = {};
 
     for (let objKey in obj) {
         let propertyByKey = obj[objKey];
 
         if (typeof propertyByKey === 'object') {
-            let objDiv = createElem(childOf, tag, objKey + ':');
-            createObj(propertyByKey, objDiv, tagName, (tagIndex == 0 ? '' : (tagIndex + 1)));
+            copyOfObj[objKey] = copyObj(propertyByKey);
         } else {
-            let property = createElem(childOf, tag, objKey + ': ' + propertyByKey);
+            copyOfObj[objKey] = propertyByKey;
         }
     }
+
+    return copyOfObj;
 };
 
-
-function outputData(objs, parentId, childOf) {
-    let parentBlock = createElem(childOf, 'div', '');
-    parentBlock.id = parentId;
-    createElem(parentBlock, 'h2', (parentId + ':').toUpperCase());
-
+function copyArrObj(objs) {
+    let objsCopy = [];
     for (let obj of objs) {
-        let objDiv = createElem(parentBlock, 'div', '');
-        createObj(obj, objDiv, 'h', 3);
+        objsCopy.push(copyObj(obj));
     }
+    return objsCopy;
 };
 
-function func(baseURL, suffOfBaseURL, childOf) {
+function func(baseURL, suffOfBaseURL) {
     fetch(baseURL + suffOfBaseURL)
         .then(resp => resp.json())
         .then(objsJsonplaceholder => {
                 let jsonObjs = JSON.stringify(objsJsonplaceholder);
                 let objs = JSON.parse(jsonObjs);
-                outputData(objs, suffOfBaseURL, childOf);
+                let objsCopy = copyArrObj(objs);
+                (JSON.stringify(objs) === JSON.stringify(objsCopy)) && (console.log('Ok!'));
+                console.log(objs);
+                console.log(objsCopy);
             }
         );
 };
+func("https://jsonplaceholder.typicode.com/", 'users');
 
 
+//25
+let div25 = task(25, '===========додаткове від віктора========' +
+    '\n' + '3) Flat' +
+    '\n' + 'Вирівняти багаторівневий масив в однорівневий' +
+    '\n' + "[1,3, ['Hello', 'Wordd', [9,6,1]], ['oops'], 9] -> [1, 3, 'Hello', 'Wordd', 9, 6, 1, 'oops', 9]" +
+    '');
 
-// ===========додаткове від віктора========
-// 3) Flat
-// Вирівняти багаторівневий масив в однорівневий
-// [1,3, ['Hello, 'Wordd', [9,6,1]], ['oops'], 9] -> [1, 3, 'Hello, 'Wordd', 9, 6, 1, 'oops', 9]
-// ===========додаткове========
+let arr25 = [1, 3, ['Hello', 'Wordd', [9, 6, 1]], ['oops'], 9];
+
+function func(arr) {
+    let arr2 = [];
+    for (let i = 0; i < arr.length; i++) {
+        let arrElement = arr[i];
+
+        if (Array.isArray(arrElement)) {
+            arr2 = [...arr2, ...func(arrElement)];
+        } else {
+            arr2 = [...arr2, arrElement];
+        }
+    }
+    return arr2
+}
+
+function funcFlat(arr) {
+    return func(arr);
+}
+
+let arr25_2 = funcFlat(arr25);
+console.log(arr25);
+console.log(arr25_2);
