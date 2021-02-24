@@ -1,3 +1,5 @@
+//https://github.com/GrayHead/js_demos/blob/master/this_one_folder_that_you_need/lesson4_divide/tasks/task4.txt
+
 function task(taskNumber, taskTxt = '') {
     console.log('----' + taskNumber + '. ' + taskTxt);
     taskN = document.createElement('div');
