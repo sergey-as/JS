@@ -478,7 +478,7 @@ class CarsClass {
     };
 };
 
-let car3 = new Cars('audi', 'A100', 2001, 220, 2.0);
+let car3 = new CarsClass('audi', 'A100', 2001, 220, 2.0);
 console.log('car3', car3);
 car3.drive();
 car3.info();
@@ -494,13 +494,87 @@ let div6 = task(6, '-створити класс попелюшка з поля�
     '\n' + '--Сторити об\'єкт класу "принц" за допомоги класу який має поля ім\'я, вік, туфелька яку він знайшов.' +
     '\n' + '-- за допоиоги циклу знайти яка попелюшка повинна бути з принцом' +
     '');
+{
+    let Cinderella = class {
+        constructor(name, age, footsize) {
+            this.name = name;
+            this.age = age;
+            this.footsize = footsize;
+        };
+    };
 
+    class Prince {
+        constructor(name, age, shoesize) {
+            this.name = name;
+            this.age = age;
+            this.shoesize = shoesize;
+        };
+    };
 
+    let cinderellas = [
+        new Cinderella('olya', 17, 37),
+        new Cinderella('katya', 18, 37),
+        new Cinderella('anya', 19, 38),
+        new Cinderella('oksana', 19, 36),
+        new Cinderella('masha', 19, 39),
+        new Cinderella('lesya', 20, 37),
+        new Cinderella('ira', 20, 39),
+        new Cinderella('marina', 21, 40),
+        new Cinderella('kristina', 21, 38),
+        new Cinderella('svitlana', 22, 39),
+    ];
+    console.log(cinderellas);
+    let prince = new Prince('ivan', 23, 36);
+    console.log(prince);
 
+    for (let i = 0; i < cinderellas.length; i++) {
+        let cinderella = cinderellas[i];
+        (prince.shoesize === cinderella.footsize) && (console.log(`cinderella fo prince: ${cinderella.name} ${cinderella.age} ${cinderella.footsize}`, cinderella));
+    }
+}
 
-// ==============================================
-// -створити функцію конструктор попелюшка з полями ім'я, вік, розмір ноги
-// --Створити 10 попелюшок , покласти їх в масив
-// --Сторити об'єкт типу "принц" за допомоги функції конструктора з полями ім'я, вік, туфелька яку він знайшов, та функцію "пошук попелюшки"
-// -- функція повинна приймати масив попелюшок, та шукає ту котра йому підходить
-// ==============================================
+//7
+let div7 = task(7, '-створити функцію конструктор попелюшка з полями ім\'я, вік, розмір ноги' +
+    '\n' + '--Створити 10 попелюшок , покласти їх в масив' +
+    '\n' + '--Сторити об\'єкт типу "принц" за допомоги функції конструктора з полями ім\'я, вік, туфелька яку він знайшов, та функцію "пошук попелюшки"' +
+    '\n' + '-- функція повинна приймати масив попелюшок, та шукає ту котра йому підходить' +
+    '');
+{
+    class Cinderella {
+        constructor(name, age, footsize) {
+            this.name = name;
+            this.age = age;
+            this.footsize = footsize;
+        };
+    };
+
+    class Prince {
+        constructor(name, age, shoesize) {
+            this.name = name;
+            this.age = age;
+            this.shoesize = shoesize;
+            this.findCinderella = function (cinderellas) {
+                for (let i = 0; i < cinderellas.length; i++) {
+                    if (this.shoesize === cinderellas[i].footsize) return cinderellas[i];
+                }
+            };
+        };
+    };
+
+    let cinderellas = [
+        new Cinderella('olya', 17, 37),
+        new Cinderella('katya', 18, 37),
+        new Cinderella('anya', 19, 38),
+        new Cinderella('oksana', 19, 36),
+        new Cinderella('masha', 19, 39),
+        new Cinderella('lesya', 20, 37),
+        new Cinderella('ira', 20, 39),
+        new Cinderella('marina', 21, 40),
+        new Cinderella('kristina', 21, 38),
+        new Cinderella('svitlana', 22, 39),
+    ];
+    console.log(cinderellas);
+    let prince = new Prince('ivan', 23, 36);
+    console.log(prince);
+    console.log(prince.findCinderella(cinderellas));
+}
