@@ -88,13 +88,13 @@ let div2 = task(2, '- создать массив со словами на 15-20
 let words = ['создать', 'массив', 'со', 'словами', 'на',
     '15-20', 'элементов', 'отсортировать', 'его', 'по',
     'алфавиту', 'в', 'восходящем', 'порядке', 'нисходящем',
-    'отфильтровать', 'слова'];
+    'отфильтровать', 'слова', 'слов'];
 console.log(words);
 {
     console.log('отсортировать его по алфавиту в восходящем порядке.');
-    console.log(words.sort((a, b) => (a > b)));/
     console.log(words.sort());
 }
+
 {
     console.log('отсортировать его по алфавиту  в нисходящем порядке.');
     console.log(words.sort(function (a, b) {
@@ -105,21 +105,106 @@ console.log(words);
         } else return 0;
     }));
 }
+
 {
     console.log('отфильтровать слова длиной менее 4х символов');
+    console.log(words.filter((elem) => (elem.length <= 4)));
 }
+
 {
     console.log('перебрать массив при помощи map() и получить новый массив в котором все значения будут со знаком "!" в конце');
+    let newWords = words.map(elem => elem + '!');
+    console.log(newWords);
 }
 
 
-// Все робити через функції масивів (foreach, map ...тд)
-// Дан масив :
-//     let users = [ {name: 'vasya', age: 31, status: false}, {name: 'petya', age: 30, status: true}, {name: 'kolya', age: 29, status: true}, {name: 'olya', age: 28, status: false}, {name: 'max', age: 30, status: true}, {name: 'anya', age: 31, status: false}, {name: 'oleg', age: 28, status: false}, {name: 'andrey', age: 29, status: true}, {name: 'masha', age: 30, status: true}, {name: 'olya', age: 31, status: false}, {name: 'max', age: 31, status: true} ];
-// - відсортувати його за  віком (зростання , а потім окремо спадання)
-// - відсортувати його за кількістю знаків в імені  (зростання , а потім окремо спадання)
-// - пройтись по ньому та додати кожному юзеру поле id - яке характеризує унікальний індентифікатор (По якому принципу його створювати - ваше рішення), та зберегти це в новий масив (первинний масив залишиться без змін)
-// - відсортувати його за індентифікатором
+//3
+let div3 = task(3, 'Все робити через функції масивів (foreach, map ...тд)' +
+    '\n' + 'Дан масив :' +
+    '\n' + 'let users = [ {name: \'vasya\', age: 31, status: false}, {name: \'petya\', age: 30, status: true}, {name: \'kolya\', age: 29, status: true}, {name: \'olya\', age: 28, status: false}, {name: \'max\', age: 30, status: true}, {name: \'anya\', age: 31, status: false}, {name: \'oleg\', age: 28, status: false}, {name: \'andrey\', age: 29, status: true}, {name: \'masha\', age: 30, status: true}, {name: \'olya\', age: 31, status: false}, {name: \'max\', age: 31, status: true} ];' +
+    '\n' + 'відсортувати його за  віком (зростання , а потім окремо спадання)' +
+    '\n' + 'відсортувати його за кількістю знаків в імені  (зростання , а потім окремо спадання)' +
+    '\n' + 'пройтись по ньому та додати кожному юзеру поле id - яке характеризує унікальний індентифікатор (По якому принципу його створювати - ваше рішення), та зберегти це в новий масив (первинний масив залишиться без змін)' +
+    '\n' + 'відсортувати його за індентифікатором' +
+    '');
 
-// -- наисать функцию калькулятора с 2мя числами и колбеком
-// -- наисать функцию калькулятора с 3мя числами и колбеком
+let users = [
+    {name: 'vasya', age: 31, status: false},
+    {name: 'petya', age: 30, status: true},
+    {name: 'kolya', age: 29, status: true},
+    {name: 'olya', age: 28, status: false},
+    {name: 'max', age: 30, status: true},
+    {name: 'anya', age: 31, status: false},
+    {name: 'oleg', age: 28, status: false},
+    {name: 'andrey', age: 29, status: true},
+    {name: 'masha', age: 30, status: true},
+    {name: 'olya', age: 31, status: false},
+    {name: 'max', age: 31, status: true}
+];
+users.forEach(elem => console.log(elem));
+
+{
+    console.log('відсортувати його за  віком (зростання , а потім окремо спадання)');
+    console.log('зростання:');
+    users.sort((a, b) => (a.age - b.age));
+    users.forEach(elem => console.log(elem));
+
+    console.log('спадання:');
+    users.sort((a, b) => (b.age - a.age));
+    users.forEach(elem => console.log(elem));
+}
+
+{
+    console.log('відсортувати його за кількістю знаків в імені  (зростання , а потім окремо спадання)');
+    console.log('зростання:');
+    users.sort((a, b) => (a.name.length - b.name.length));
+    users.forEach(elem => console.log(elem));
+
+    console.log('спадання:');
+    users.sort((a, b) => (b.name.length - a.name.length));
+    users.forEach(elem => console.log(elem));
+}
+
+{
+    console.log('пройтись по ньому та додати кожному юзеру поле id - яке характеризує унікальний індентифікатор' +
+        ' (По якому принципу його створювати - ваше рішення), та зберегти це в новий масив (первинний масив залишиться без змін)');
+    let usersNew = users.map(function (elem) {
+        let userN = JSON.parse(JSON.stringify(elem));
+        userN.id = elem.name.length + elem.age;
+        return userN;
+    });
+    users.forEach(elem => console.log(elem));
+    usersNew.forEach(elem => console.log(elem));
+
+    console.log('відсортувати його за індентифікатором');
+    usersNew.sort((a, b) => (a.id - b.id));
+    usersNew.forEach(elem => console.log(elem));
+}
+
+
+//4
+let div4 = task(4, 'наисать функцию калькулятора с 2мя числами и колбеком');
+{
+    function calc(a, b, callback) {
+        let result = callback(a, b);
+        console.log(result);
+    }
+
+    calc(25, 33, function (a, b) {
+        return a + b;
+    })
+}
+
+
+//4
+let div5 = task(5, 'наисать функцию калькулятора с 3мя числами и колбеком');
+{
+    function calc(a, b, c, callback) {
+        let result = callback(a, b, c);
+        console.log(result);
+    }
+
+    calc(25, 33, 123, function (a, b, c) {
+        return c - (a + b);
+    })
+}
