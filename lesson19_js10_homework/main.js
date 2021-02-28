@@ -1,4 +1,6 @@
-function task(taskNumber, taskTxt = '') {
+// https://github.com/GrayHead/js_demos/blob/master/this_one_folder_that_you_need/lesson7/tasks/task
+
+    function task(taskNumber, taskTxt = '') {
     console.log('----' + taskNumber + '. ' + taskTxt);
     taskN = document.createElement('div');
     taskN.id = 'task' + taskNumber;
