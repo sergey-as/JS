@@ -351,11 +351,12 @@ let car = {
         console.log(`їдемо зі швидкістю ${this.maxspeed} на годину`);
     },
     info: function () {
-        console.log(this.manufacturer);
-        console.log(this.model);
-        console.log(this.year);
-        console.log(this.maxspeed);
-        console.log(this.enginevolume);
+        console.log(`
+        manufacturer: ${this.manufacturer}
+        model: ${this.model}
+        year: ${this.year}
+        maxspeed: ${this.maxspeed}
+        enginevolume: ${this.enginevolume}`);
     },
     increaseMaxSpeed: function (newSpeed) {
         this.maxspeed += newSpeed;
