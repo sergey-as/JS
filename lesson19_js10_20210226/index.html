@@ -5,10 +5,13 @@
     <title>lesson19_js10_20210226 Events BOM LocalStorage</title>
 
     <style type="text/css">
-        .omd {
+        #box {
             width: 200px;
             height: 200px;
-            background: red;
+            box-sizing: border-box;
+            border: 1px solid black;
+            /*background: red;*/
+            transition: 300ms;
         }
     </style>
 </head>
@@ -17,6 +20,8 @@
 <!--type node element ....-->
 <!--events-->
 
+<div id="box"></div>
+
 <!--<form action="xxx">-->
 <!--    <input type="text" name="imya">-->
 <!--    <input type="text" name="vik">-->
@@ -24,10 +29,16 @@
 <!--</form>-->
 
 <input type="text" name="name" value="serj">
-<input type="number" name="age" placeholder="enter your age">
-<textarea name="msg" id="" cols = "30"  rows="10"></textarea>
+<input type="number" name="age" value="35" placeholder="enter your age">
+<textarea name="msg" id="" cols="30" rows="10"></textarea>
 <!--<button onclick="getObject()">send</button>-->
-<button id = "target">send</button>
+<button id="target">send</button>
+<div></div>
+
+<label for="x">status: true</label>
+<input id="x" type="checkbox">
+
+<div id="target1"></div>
 
 
 
