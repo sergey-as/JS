@@ -237,13 +237,13 @@ span.onclick = function () {
 
 //7
 let div7 = task(7, '- створити 2 форми  по 2 інпути в кожній.' +
-    ' ствоирити кнопку при кліку на яку считується та виводиться на консоль інформація з цих 2х форм.' +
+    '\n' + ' ствоирити кнопку при кліку на яку считується та виводиться на консоль інформація з цих 2х форм.' +
     '\n' + 'Кнопка повинна лежати за межами форм (Щоб ьуникнути  перезавантаження сторінки)' +
     '\n' + 'Доступ до інпутів через Forms API. Отже дайте формі та інпутам всі необхідні атрибути.' +
+    '\n' +
     '\n');
 
 function createElem(tagName, parent, id, innerText, action, type, name, value) {
-    console.log(arguments);
     let elem = document.createElement(tagName);
     !(id === '') && (elem.id = id);
     !(innerText === '') && (elem.innerText = innerText);
@@ -254,26 +254,44 @@ function createElem(tagName, parent, id, innerText, action, type, name, value) {
     parent.appendChild(elem);
     return elem;
 };
+{
+    let form1 = createElem('form', div7, '', '', '', '', 'form1', '');
+    let input11 = createElem('input', form1, 'input11', '', '', 'text', 'imya', 'petro');
+    let input12 = createElem('input', form1, 'input12', '', '', 'number', 'vik', '22');
 
-let form1 = createElem('form', div7, '', '', '', '', 'form1', '');
-console.log(form1);
-let input11 = createElem('input', form1, '', 'input11', '', 'text', 'imya', 'petro');
-let input12 = createElem('input', form1, '', 'input12', '', 'text', 'vik', '22');
+    let form2 = createElem('form', div7, '', '', '', '', 'form2', '');
+    let input21 = createElem('input', form2, 'input21', '', '', 'text', 'imya', 'mykola');
+    let input22 = createElem('input', form2, 'input22', '', '', 'number', 'vik', '33');
 
-let form2 = createElem('form', div7, '', '', '', '', 'form2', '');
-let input21 = createElem('input', form2, '', 'input21', '', 'text', 'imya', 'mykola');
-let input22 = createElem('input', form2, '', 'input22', '', 'text', 'vik', '33');
+    let btn = createElem('button', div7, 'btn', 'SEND', '', '', '', '');
 
-let p = createElem('p', div7, '', '', '', '', '', '');
-let submit = createElem('input', p, '', '', '', 'submit', '', '');
-
-
-
+    btn.addEventListener('click', function () {
+        console.log('imya: ' + document.getElementById('input11').value, 'vik: ' + document.getElementById('input12').value);
+        console.log('imya: ' + document.getElementById('input21').value, 'vik: ' + document.getElementById('input22').value);
+    });
+}
 
 
 //8
-// let div8 = task(8, '- Створити 3 инпута та кнопку. Один визначає кількість рядків, другий - кількість ячеєк, третій вмиіст ячеєк.' +
-//     '\n' + 'При натисканні кнопки, вся ця інформація зчитується і формується табличка, з відповідним вмістом.' +
-//     '\n' + '(Додатковачастина для завдання)' +
-//     '\n');
+let div8 = task(8, '- Створити 3 инпута та кнопку.' +
+    '\n' + 'Один визначає кількість рядків, другий - кількість ячеєк, третій вмиіст ячеєк.' +
+    '\n' + 'При натисканні кнопки, вся ця інформація зчитується і формується табличка, з відповідним вмістом.' +
+    '\n' + '(Додатковачастина для завдання)' +
+    '\n');
+{
+    let input1 = createElem('input', div8, 'rows', '', '', 'number', 'rows', '5');
+    let input2 = createElem('input', div8, 'columns', '', '', 'number', 'columns', '7');
+    let input3 = createElem('input', div8, 'content', '', '', 'text', 'content', 'sfasd');
 
+    let btn = createElem('button', div8, 'btn', 'OK', '', '', '', '');
+
+    btn.onclick = function () {
+        let table = createElem('table', div8, '', '', '', '', '', '');
+        for (let i = 0; i < input1.value; i++) {
+            let td = createElem('td', table, '', '', '', '', '', '');
+            for (let j = 0; j < input2.value; j++) {
+                let tr = createElem('tr', td, '', input3.value, '', '', '', '');
+            }
+        }
+    };
+}

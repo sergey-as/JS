@@ -76,7 +76,8 @@ let target = document.getElementById('target');
 // });
 //
 // target.addEventListener('click', () => console.log('hallo'));
-//
+
+
 // for (const input of inputs) {
 //     input.addEventListener('mouseover', () => {
 //         input.style.background = 'silver';
