@@ -243,6 +243,7 @@ let div7 = task(7, '- створити 2 форми  по 2 інпути в ко
     '\n');
 
 function createElem(tagName, parent, id, innerText, action, type, name, value) {
+    console.log(arguments);
     let elem = document.createElement(tagName);
     !(id === '') && (elem.id = id);
     !(innerText === '') && (elem.innerText = innerText);
@@ -251,18 +252,23 @@ function createElem(tagName, parent, id, innerText, action, type, name, value) {
     !(name === '') && (elem.name = name);
     !(value === '') && (elem.value = value);
     parent.appendChild(elem);
+    return elem;
 };
 
-let form1 = createElem('form', div7, '', 'Form1 Как по вашему мнению расшифровывается аббревиатура &quot;ОС&quot;?', 'xxx1', '', '', '');
+let form1 = createElem('form', div7, '', '', '', '', 'form1', '');
+console.log(form1);
 let input11 = createElem('input', form1, '', 'input11', '', 'text', 'imya', 'petro');
 let input12 = createElem('input', form1, '', 'input12', '', 'text', 'vik', '22');
 
-let form2 = createElem('form', div7, '', 'Form2', 'xxx2', '', '', '');
+let form2 = createElem('form', div7, '', '', '', '', 'form2', '');
 let input21 = createElem('input', form2, '', 'input21', '', 'text', 'imya', 'mykola');
 let input22 = createElem('input', form2, '', 'input22', '', 'text', 'vik', '33');
 
 let p = createElem('p', div7, '', '', '', '', '', '');
 let submit = createElem('input', p, '', '', '', 'submit', '', '');
+
+
+
 
 
 //8
