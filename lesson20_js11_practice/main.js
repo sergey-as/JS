@@ -60,8 +60,8 @@ function createElem(tagName, parent, id, innerText, action, type, name, value, l
 
 {
     let form = createElem('form', div2, 'myForm', '', '', '', 'form', '');
-    let input1 = createElem('input', form, 'input1', '', '', 'text', 'imya', 'petro');
-    let input2 = createElem('input', form, 'input2', '', '', 'number', 'vik', '22');
+    let input1 = createElem('input', form, 'input1', '', '', 'text', 'imya', '');
+    let input2 = createElem('input', form, 'input2', '', '', 'number', 'vik', '');
 
     let pCheckbox = createElem('p', form, 'checkbox', '', '', '', '', '');
     let input31 = createElem('input', pCheckbox, 'input31', 'Еда', '', 'checkbox', 'select', 'Еда');
@@ -79,34 +79,64 @@ function createElem(tagName, parent, id, innerText, action, type, name, value, l
 
     let txtArea = createElem('textarea', form, 'txtArea', '', '', 'textarea', '', '');
 
+    let btn = createElem('button', div2, 'btn', 'DELETE localStorage', '', '', '', '');
 
     let keys = Object.keys(localStorage);
+
+    btn.onclick = function () {
+        for (let i = 0; i < form.length; i++) {
+            let formElement = form[i];
+            localStorage.removeItem(formElement.id);
+        }
+    }
+
     for (let key of keys) {
         for (let i = 0; i < form.length; i++) {
             let formElement = form[i];
-            (key === formElement.id) && (formElement.value = localStorage.getItem(key));
+            if (key === formElement.id) {
+                if ((formElement.type === 'checkbox') || (formElement.type === 'radio')) {
+                    formElement.checked = localStorage.getItem(key);
+                } else (formElement.value = localStorage.getItem(key));
+            }
         }
+    }
+
+    function addToLocalStorage(formElement) {
+        if (formElement.type === 'checkbox') {
+            localStorage.setItem(formElement.id, formElement.checked);
+        } else if (formElement.type === 'radio') {
+            let radios = document.getElementsByName(formElement.name);
+            // console.log(radios);
+            for (let i = 0; i < radios.length; i++) {
+                let radio = radios[i];
+                localStorage.setItem(radio.id, radio.checked);
+            }
+        } else (localStorage.setItem(formElement.id, formElement.value));
     }
 
     for (let i = 0; i < form.length; i++) {
         let formElement = form[i];
 
-        formElement.onkeyup = function () {
-            localStorage.setItem(formElement.id, formElement.value);
-        };
+        formElement.onkeyup = () => addToLocalStorage(formElement);
+        formElement.onclick = () => addToLocalStorage(formElement);
 
-        formElement.onmousemove = function () {
-            localStorage.setItem(formElement.id, formElement.value);
+        txtArea.onmousemove = function () {
+            (formElement.type === 'textarea') && (addToLocalStorage(formElement));
         };
     }
-
 }
 
 
-// -Дан текстареа. В него можно ввести данные, нажать кнопку "сохранить" и они "фикисруются" (в хранилище), затем поредактировать их, затем еще поредактировать и возможно еще.....
-// Требование : хранить историю своих изменений (даже после перезагрузки страницы).
-// Сверху над текстареа должны появится стрелочки, с помощью которых можно перемещаться по истории (не забудьте!чекпоинт истории - нажатеи кнопки сохранить).
-//
+
+//3
+let div3 = task(3, '-Дан текстареа. В него можно ввести данные, нажать кнопку "сохранить"' +
+    ' и они "фикисруются" (в хранилище), затем поредактировать их, затем еще поредактировать и возможно еще.....' +
+    '\n Требование : хранить историю своих изменений (даже после перезагрузки страницы).' +
+    '\n Сверху над текстареа должны появится стрелочки, с помощью которых можно перемещаться' +
+    ' по истории (не забудьте!чекпоинт истории - нажатеи кнопки сохранить).' +
+    '\n' + '');
+
+
 // - Реализуйте записную книгу, хранящую данные в локальном хранилище.
 // Данные которые надо сохранять : ФИО, номер, почта, фирма, отдел, день рождения
 // Данные вводить через соответсвующую форму.
