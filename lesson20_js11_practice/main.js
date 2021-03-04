@@ -10,6 +10,20 @@ function task(taskNumber, taskTxt = '') {
 }
 
 
+function createElem(tagName, parent, id, innerText, action, type, name, value, labelFor) {
+    let elem = document.createElement(tagName);
+    !(id === '') && (elem.id = id);
+    !(innerText === '') && (elem.innerText = innerText);
+    !(action === '') && (elem.action = action);
+    !(type === '') && (elem.type = type);
+    !(name === '') && (elem.name = name);
+    !(value === '') && (elem.value = value);
+    !(labelFor === '') && (elem.for = labelFor);
+    parent.appendChild(elem);
+    return elem;
+}
+
+
 //1
 let div1 = task(1, '- Дана textarea.' +
     '\n В неё вводится текст.' +
@@ -44,19 +58,6 @@ let div2 = task(2, '- Дана форма с инпутами, текстаре�
     '\n Сделайте ваш скрипт как можно более универсальным.' +
     '\n' +
     '');
-
-function createElem(tagName, parent, id, innerText, action, type, name, value, labelFor) {
-    let elem = document.createElement(tagName);
-    !(id === '') && (elem.id = id);
-    !(innerText === '') && (elem.innerText = innerText);
-    !(action === '') && (elem.action = action);
-    !(type === '') && (elem.type = type);
-    !(name === '') && (elem.name = name);
-    !(value === '') && (elem.value = value);
-    !(labelFor === '') && (elem.for = labelFor);
-    parent.appendChild(elem);
-    return elem;
-}
 
 {
     let form = createElem('form', div2, 'myForm', '', '', '', 'form', '');
@@ -127,7 +128,6 @@ function createElem(tagName, parent, id, innerText, action, type, name, value, l
 }
 
 
-
 //3
 let div3 = task(3, '-Дан текстареа. В него можно ввести данные, нажать кнопку "сохранить"' +
     ' и они "фикисруются" (в хранилище), затем поредактировать их, затем еще поредактировать и возможно еще.....' +
@@ -135,7 +135,11 @@ let div3 = task(3, '-Дан текстареа. В него можно ввес�
     '\n Сверху над текстареа должны появится стрелочки, с помощью которых можно перемещаться' +
     ' по истории (не забудьте!чекпоинт истории - нажатеи кнопки сохранить).' +
     '\n' + '');
+{
+    let txtArea = createElem('textarea', form, 'txtArea', '', '', 'textarea', '', '');
 
+    let btn = createElem('button', div2, 'btn', 'DELETE localStorage', '', '', '', '');
+}
 
 // - Реализуйте записную книгу, хранящую данные в локальном хранилище.
 // Данные которые надо сохранять : ФИО, номер, почта, фирма, отдел, день рождения
