@@ -31,22 +31,22 @@ let div1 = task(1, '- Дана textarea.' +
     '\n' +
     '');
 {
-    let txtArea = document.createElement('textarea');
-    div1.appendChild(txtArea);
-    txtArea.name = 'txtArea';
-    txtArea.id = 'txtArea';
+    let txtArea1 = document.createElement('textarea');
+    div1.appendChild(txtArea1);
+    txtArea1.name = 'txtArea1';
+    txtArea1.id = 'txtArea1';
 
     let keys = Object.keys(localStorage);
     for (let key of keys) {
-        (key === 'txtArea1') && (txtArea.value = localStorage.getItem(key));
+        (key === txtArea1.id) && (txtArea1.value = localStorage.getItem(key));
     }
 
-    txtArea.onkeyup = function () {
-        localStorage.setItem('txtArea1', txtArea.value);
+    txtArea1.onkeyup = function () {
+        localStorage.setItem('txtArea1', txtArea1.value);
     };
 
-    txtArea.onmousemove = function () {
-        localStorage.setItem('txtArea1', txtArea.value);
+    txtArea1.onmousemove = function () {
+        localStorage.setItem('txtArea1', txtArea1.value);
     };
 }
 
@@ -78,7 +78,7 @@ let div2 = task(2, '- Дана форма с инпутами, текстаре�
     let input43 = createElem('input', pRadio, 'input43', 'Кофе', '', 'radio', 'drink', 'rad3');
     let label43 = createElem('label', pRadio, '', 'Кофе', '', '', '', '', 'input43');
 
-    let txtArea = createElem('textarea', form, 'txtArea', '', '', 'textarea', '', '');
+    let txtArea2 = createElem('textarea', form, 'txtArea2', '', '', 'textarea', '', '');
 
     let btn = createElem('button', div2, 'btn', 'DELETE localStorage', '', '', '', '');
 
@@ -121,7 +121,7 @@ let div2 = task(2, '- Дана форма с инпутами, текстаре�
         formElement.onkeyup = () => addToLocalStorage(formElement);
         formElement.onclick = () => addToLocalStorage(formElement);
 
-        txtArea.onmousemove = function () {
+        txtArea2.onmousemove = function () {
             (formElement.type === 'textarea') && (addToLocalStorage(formElement));
         };
     }
@@ -136,9 +136,31 @@ let div3 = task(3, '-Дан текстареа. В него можно ввес�
     ' по истории (не забудьте!чекпоинт истории - нажатеи кнопки сохранить).' +
     '\n' + '');
 {
-    let txtArea = createElem('textarea', form, 'txtArea', '', '', 'textarea', '', '');
+    let p = createElem('p', div3, '', '', '', '', '', '');
+    let btnLeft = createElem('input', p, 'btnLeft', '', '', 'button', '', '<==');
+    let btnRight = createElem('input', p, 'btnRight', '', '', 'button', '', '==>');
+    let txtArea3 = createElem('textarea', div3, 'txtArea3', '', '', 'textarea', '', '');
+    let btnSave = createElem('input', div3, 'btnSave', '', '', 'button', '', 'Save');
+    let btnRemoveItem = createElem('input', div3, 'btnRemoveItem', '', '', 'button', '', 'Remove Items');
 
-    let btn = createElem('button', div2, 'btn', 'DELETE localStorage', '', '', '', '');
+    let countOfSave = +localStorage.getItem('countOfSave');
+    console.log('countOfSave:' + countOfSave);
+    txtArea3.volume = localStorage.getItem(txtArea3.id + countOfSave);
+    console.log(txtArea3.volume);
+
+    btnSave.onclick = () => {
+        countOfSave++;
+        localStorage.setItem('countOfSave', countOfSave);
+        localStorage.setItem(txtArea3.id + countOfSave, txtArea3.value);
+    };
+
+    btnRemoveItem.onclick = () => {
+        for (let i = 1; i <= countOfSave; i++) {
+            localStorage.removeItem(txtArea3.id + i);
+        }
+        countOfSave = 0;
+        localStorage.removeItem('countOfSave');
+    }
 }
 
 // - Реализуйте записную книгу, хранящую данные в локальном хранилище.
