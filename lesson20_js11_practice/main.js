@@ -138,20 +138,51 @@ let div3 = task(3, '-Дан текстареа. В него можно ввес�
 {
     let p = createElem('p', div3, '', '', '', '', '', '');
     let btnLeft = createElem('input', p, 'btnLeft', '', '', 'button', '', '<==');
+    let spanCountOfRead = createElem('span', p, 'countOfRead', '', '', '', '', '');
     let btnRight = createElem('input', p, 'btnRight', '', '', 'button', '', '==>');
     let txtArea3 = createElem('textarea', div3, 'txtArea3', '', '', 'textarea', '', '');
+    txtArea3.style = 'width: 200px; height: 100px';
     let btnSave = createElem('input', div3, 'btnSave', '', '', 'button', '', 'Save');
     let btnRemoveItem = createElem('input', div3, 'btnRemoveItem', '', '', 'button', '', 'Remove Items');
 
+
+    function setCountOfRead() {
+        spanCountOfRead.innerText = countOfRead;
+        localStorage.setItem('countOfRead', countOfRead);
+    };
+
     let countOfSave = +localStorage.getItem('countOfSave');
-    console.log('countOfSave:' + countOfSave);
-    txtArea3.volume = localStorage.getItem(txtArea3.id + countOfSave);
-    console.log(txtArea3.volume);
+    let countOfRead = countOfSave;
+    setCountOfRead();
+    txtArea3.value = localStorage.getItem(txtArea3.id + countOfRead);
 
     btnSave.onclick = () => {
         countOfSave++;
+        countOfRead = countOfSave;
+        setCountOfRead();
         localStorage.setItem('countOfSave', countOfSave);
         localStorage.setItem(txtArea3.id + countOfSave, txtArea3.value);
+    };
+
+    btnLeft.onclick = () => {
+        console.log(countOfRead);
+        countOfRead--;
+        console.log(countOfRead);
+        if (countOfRead < 1) {
+            countOfRead = countOfSave;
+            console.log(countOfRead);
+        } else (countOfSave === 0) && (countOfRead = 0);
+        setCountOfRead();
+        txtArea3.value = localStorage.getItem(txtArea3.id + countOfRead);
+    };
+
+    btnRight.onclick = () => {
+        countOfRead++;
+        if (countOfRead > countOfSave > 0) {
+            countOfRead = 1;
+        } else (countOfSave === 0) && (countOfRead = 0);
+        setCountOfRead();
+        txtArea3.value = localStorage.getItem(txtArea3.id + countOfRead);
     };
 
     btnRemoveItem.onclick = () => {
@@ -159,12 +190,20 @@ let div3 = task(3, '-Дан текстареа. В него можно ввес�
             localStorage.removeItem(txtArea3.id + i);
         }
         countOfSave = 0;
+        setCountOfRead();
         localStorage.removeItem('countOfSave');
+        localStorage.removeItem('countOfRead');
     }
 }
 
-// - Реализуйте записную книгу, хранящую данные в локальном хранилище.
-// Данные которые надо сохранять : ФИО, номер, почта, фирма, отдел, день рождения
-// Данные вводить через соответсвующую форму.
-// --Каждому контакту добавить кнопку для удаления контакта.
-// --Каждому контакту добавить кнопку редактироваиня. При нажати на нее появляется форма, в которой есть все необходимые инпуты для редактирования, которые уже заполнены данными объекта
+
+//4
+let div4 = task(4, '' +
+    '\n' + '- Реализуйте записную книгу, хранящую данные в локальном хранилище.' +
+    '\n' + 'Данные которые надо сохранять : ФИО, номер, почта, фирма, отдел, день рождения' +
+    '\n' + 'Данные вводить через соответсвующую форму.' +
+    '\n' + '--Каждому контакту добавить кнопку для удаления контакта.' +
+    '\n' + '--Каждому контакту добавить кнопку редактироваиня.' +
+    ' При нажати на нее появляется форма, в которой есть все необходимые инпуты для редактирования,' +
+    ' которые уже заполнены данными объекта' +
+    '');
