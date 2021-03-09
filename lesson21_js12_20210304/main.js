@@ -1,19 +1,4 @@
-// fetch('https://jsonplaceholder.typicode.com/users/1')
-//     .then(responce => responce.json())
-//     .then(user => {
-//         // userId = 1;
-//         fetch('https://jsonplaceholder.typicode.com/posts?userId=' + user.id)
-//             .then(responce => responce.json())
-//             .then(posts => {
-//                 let post = posts[0];
-//                 fetch('https://jsonplaceholder.typicode.com/comments?postId=' + post.id)
-//                     .then(value => value.json())
-//                     .then(comments => {
-//                         console.log(comments);
-//                     });
-//             });
-//     });
-
+6
 
 // fetch('https://jsonplaceholder.typicode.com/users/1')
 //     .then(value => value.json())
